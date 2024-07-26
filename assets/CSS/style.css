@@ -241,11 +241,9 @@ html {
 
 
 /* About */
-
 .about-section {
-  height: 70vh;
   padding: 80px 20px;
-  background: linear-gradient(135deg, var(--primary-color), #0c1862);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: var(--colorb);
   overflow: hidden;
   position: relative;
@@ -302,7 +300,7 @@ html {
   background: var(--colora);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .feature:hover {
@@ -331,7 +329,6 @@ html {
   color: var(--colorb);
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
   .about-content {
     flex-direction: column;
@@ -344,6 +341,12 @@ html {
 
   .feature {
     flex: 1 1 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .feature {
+    flex: 1 1 100%;
   }
 }
 
@@ -428,3 +431,4 @@ html {
     width: 100%;
   }
 }
+
