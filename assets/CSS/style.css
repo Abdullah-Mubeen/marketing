@@ -16,8 +16,27 @@
   font-family: 'Poppins', sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
+
+/* Custom Scrollbar for Webkit Browsers (Chrome, Safari) */
+html::-webkit-scrollbar {
+  width: 1.2  vw;  
+  height: 0.1vh;  
+}
+
+html::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+  border-radius: 6px;
+  border: 3px solid var(--colorb);
+  transition: background 0.3s ease-in-out;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--secondary-color), var(--primary-color));
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--colorb);
+  border-radius: 6px;
 }
 
 
@@ -431,4 +450,185 @@ html {
     width: 100%;
   }
 }
+  
 
+/* Portfolio Section */
+.portfolio-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.py-5 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-heading {
+  font-size: 2.5em;
+  color: var(--colorbody);
+  margin-bottom: 30px;
+}
+
+.highlight-text {
+  color: var(--colora);
+}
+
+.portfolio-section {
+  background-color: var(--primary-color);
+  position: relative;
+  padding: 50px 0;
+  overflow-x: hidden;
+}
+
+.portfolio-heading {
+  color: var(--colorbody); 
+  font-size: 2.8em;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.swiper-container {
+  position: relative;
+  width: 100%;
+}
+
+.portfolio-card {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  display: flex;
+  align-items: flex-end;
+  height: 300px;
+  color: var(--colorbody);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.portfolio-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  transition: background 0.3s ease-in-out;
+}
+
+.portfolio-card:hover .portfolio-card-overlay {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.9));
+}
+
+.portfolio-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-card-content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.portfolio-card-title {
+  font-size: 1.75em;
+  margin-bottom: 10px;
+}
+
+.portfolio-card-description {
+  font-size: 1.1em;
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: -2rem !important;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+}
+
+.swiper-pagination-bullet {
+  background: var(--colora) !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  margin: 0 4px !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: var(--secondary-color);
+}
+
+.portfolio-swiper-button-next,
+.portfolio-swiper-button-prev {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--colora);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--colorbody);
+  font-size: 18px;
+  z-index: 10;
+  transition: background 0.3s ease-in-out;
+}
+
+.portfolio-swiper-button-next:hover,
+.portfolio-swiper-button-prev:hover {
+  background: var(--secondary-color);
+}
+
+.portfolio-swiper-button-next {
+  right: 20px;
+}
+
+.portfolio-swiper-button-prev {
+  left: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .portfolio-card {
+    max-width: 100%;
+    height: 200px;
+  }
+
+  .portfolio-swiper-button-next,
+  .portfolio-swiper-button-prev {
+    top: 10%;
+    transform: translateY(-10%);
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .portfolio-swiper-button-next,
+  .portfolio-swiper-button-prev {
+    top: 5%;
+    transform: translateY(-5%);
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+  }
+}

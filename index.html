@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="assets/CSS/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
 
 </head>
 <body>
@@ -39,7 +42,7 @@
       <li><a href="#">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#">Portfolio</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#">Contact</a></li>
     </ul>
   </nav>
@@ -123,8 +126,71 @@
       
   </section>
   
-  
-  
+ <!-- Proven Section -->
+ <section id="portfolio" class="portfolio-section py-5" >
+  <div class="portfolio-container">
+    <h1 class="portfolio-heading text-center mb-4">Proven <span class="highlight-text">Success</span></h1>
+    <div class="swiper-container portfolio-swiper" data-aos="fade-right">
+      <div class="swiper-wrapper" >
+        <!-- Case Study Cards -->
+        <div class="swiper-slide">
+          <div class="portfolio-card" style="background-image: url('case-study1-bg.jpg');">
+            <div class="portfolio-card-overlay"></div>
+            <div class="portfolio-card-content">
+              <h5 class="portfolio-card-title">Case Study 1</h5>
+              <p class="portfolio-card-description">How we helped Company A increase their online visibility by 150%.</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="portfolio-card" style="background-image: url('case-study2-bg.jpg');">
+            <div class="portfolio-card-overlay"></div>
+            <div class="portfolio-card-content">
+              <h5 class="portfolio-card-title">Case Study 2</h5>
+              <p class="portfolio-card-description">Success story of Company B's 200% revenue growth through targeted marketing strategies.</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="portfolio-card" style="background-image: url('case-study3-bg.jpg');">
+            <div class="portfolio-card-overlay"></div>
+            <div class="portfolio-card-content">
+              <h5 class="portfolio-card-title">Case Study 3</h5>
+              <p class="portfolio-card-description">Our work with Company C led to a 300% increase in lead generation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="portfolio-card" style="background-image: url('case-study3-bg.jpg');">
+            <div class="portfolio-card-overlay"></div>
+            <div class="portfolio-card-content">
+              <h5 class="portfolio-card-title">Case Study 3</h5>
+              <p class="portfolio-card-description">Our work with Company C led to a 300% increase in lead generation.</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="portfolio-card" style="background-image: url('case-study3-bg.jpg');">
+            <div class="portfolio-card-overlay"></div>
+            <div class="portfolio-card-content">
+              <h5 class="portfolio-card-title">Case Study 3</h5>
+              <p class="portfolio-card-description">Our work with Company C led to a 300% increase in lead generation.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Add more swiper-slide elements as needed -->
+      </div>
+      <!-- Pagination Dots -->
+      <div class="swiper-pagination"></div>
+      <!-- Navigation Arrows -->
+      <div class="portfolio-swiper-button-next"><i class="fas fa-chevron-right"></i></div>
+      <div class="portfolio-swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+    </div>
+  </div>
+</section>
+
   <script src="assets/JS/script.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 </body>
 </html>

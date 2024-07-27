@@ -51,3 +51,42 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  var portfolioSwiper = new Swiper('.portfolio-swiper', {
+    loop: true,
+    autoplay: {
+      delay: 3000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.portfolio-swiper-button-next',
+      prevEl: '.portfolio-swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+        spaceBetween: 10,
+      },
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+    },
+  });
+
+  var swiperContainer = document.querySelector('.portfolio-swiper');
+  swiperContainer.addEventListener('mouseenter', function () {
+    portfolioSwiper.autoplay.stop();
+  });
+  swiperContainer.addEventListener('mouseleave', function () {
+    portfolioSwiper.autoplay.start();
+  });
+});
