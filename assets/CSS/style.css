@@ -378,20 +378,20 @@ html::-webkit-scrollbar-track {
 }
 
 .services-header {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .services-header h2 {
   font-size: 3em;
   color: var(--primary-color);
   margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
 .services-header p {
-  font-size: 1.2em;
-  color: var(--secondary-color);
+  font-size: 1.4em;
+  color: var(--colora);
   margin: 0;
 }
 
@@ -632,3 +632,94 @@ html::-webkit-scrollbar-track {
     font-size: 12px;
   }
 }
+
+
+
+
+/* Contact Section */
+.contact {
+  padding: 80px 0;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.contact .container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.contact .section-description {
+  font-size: 1rem;
+  margin-bottom: 40px;
+  color: var(--colora);
+}
+
+.contact-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.contact-option {
+  flex: 1;
+  max-width: 250px;
+  margin: 20px;
+  padding: 20px;
+  background: var(--colorbody);
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px #00000030, 0px 12px 12px #00000015;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact-option:hover {
+  transform: translateY(-5px);
+}
+
+.contact-option i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.option-content h4 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.option-content p {
+  font-size: 1rem;
+  color: var(--colora);
+}
+
+.contact-action {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.action-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.action-button:hover {
+  background-color: var(--colora);
+  color: var(--secondary-colorl);
+}
+
