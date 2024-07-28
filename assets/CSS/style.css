@@ -40,22 +40,37 @@ html::-webkit-scrollbar-track {
 }
 
 
+
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 40px;
+  padding: 15px 40px;
+  background: var(--primary-color);  
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+  transition: background 0.3s ease;  
 }
 
-.header .logo {
-  color: var(--colorb);
-  text-transform: uppercase;
+.header .logo img {
+  height: 100px; 
+  width: auto; 
   cursor: pointer;
+}
+
+.header.sticky {
+  background: var(--primary-color);  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  
+}
+ 
+.header a,
+.header .menu-toggle {
+  display: flex;
+  align-items: center;
 }
 
 .menu-toggle {
@@ -69,16 +84,73 @@ html::-webkit-scrollbar-track {
   height: 20px;
 }
 
+.full-page-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color);
+  color: var(--colorb);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.full-page-menu.active {
+  transform: translateX(0);
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.close-button img {
+  width: 60%;
+  height: 25px;
+}
+
+.menu-list {
+  list-style: none;
+  text-align: center;
+}
+
+.menu-list li {
+  margin: 20px 0;
+}
+
+.menu-list li a {
+  text-decoration: none;
+  font-size: 2em;
+  color: var(--colorb);
+  transition: color 0.3s ease-in-out;
+}
+
+.menu-list li a:hover {
+  color: var(--colora);
+}
+
+
 .hero-section {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  padding: 60px;
+  padding: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--primary-color);
   color: var(--colorb);
+  overflow: hidden;
 }
 
 .hero-video {
@@ -88,7 +160,8 @@ html::-webkit-scrollbar-track {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.8;
+  opacity: 0.6;
+  filter: brightness(70%); 
 }
 
 .video-overlay {
@@ -97,46 +170,51 @@ html::-webkit-scrollbar-track {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4)
 }
 
 .hero-text {
   position: relative;
   z-index: 10;
   text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .hero-text h2 {
-  font-size: 4em;
-  font-weight: 800;
+  font-size: 4.2em;
+  font-weight: 900;
   color: var(--colorb);
   line-height: 1.2em;
+  margin-bottom: 10px;
   text-transform: uppercase;
+  
 }
 
 .hero-text h3 {
-  font-size: 3em;
+  font-size: 3.2em;
   font-weight: 700;
   color: var(--colora);
   line-height: 1.2em;
   text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .hero-text p {
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: var(--colorb);
   margin: 20px 0;
-  font-weight: 400;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  font-weight: 300;
+  max-width: 700px;
+  margin: 20px auto;
+  line-height: 1.6;
 }
 
 .hero-text a {
   display: inline-block;
-  font-size: 1.1em;
+  font-size: 1.2em;
   background: var(--colora);
-  padding: 10px 30px;
+  padding: 12px 36px;
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 500;
@@ -152,7 +230,7 @@ html::-webkit-scrollbar-track {
 
 .social-icons {
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -161,19 +239,20 @@ html::-webkit-scrollbar-track {
 
 .social-icons li {
   list-style: none;
+  font-size: 2.1em;
 }
 
 .social-icons li a {
+  color: var(--colorbody);
   display: inline-block;
-  margin: 0 10px;
-  filter: invert(1);
-  transform: scale(0.6);
+  margin: 0 15px; 
   transition: 0.3s;
 }
 
 .social-icons li a:hover {
-  transform: scale(0.6) translateY(-10px);
+  color: var(--colora);
 }
+
 
 .full-page-menu {
   position: fixed;
@@ -259,14 +338,14 @@ html::-webkit-scrollbar-track {
 }
 
 
-/* About */
+/* About Section */
 .about-section {
-  padding: 80px 20px;
+  padding: 100px 20px; 
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: var(--colorb);
   overflow: hidden;
   position: relative;
-} 
+}
 
 .about-content {
   display: flex;
@@ -275,55 +354,57 @@ html::-webkit-scrollbar-track {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  opacity: 0;
-  transform: translateY(50px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 1s ease-out, transform 1s ease-out;
 }
 
 .about-text {
-  flex: 1 1 45%;
+  flex: 1 1 50%;
   padding: 20px;
   text-align: left;
 }
 
 .about-text h2 {
-  font-size: 3em;
-  font-weight: bold;
+  font-size: 2.8rem;  
+  font-weight: 700;
   margin-bottom: 20px;
   color: var(--colorb);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  line-height: 1.2;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); 
+  line-height: 1.3;
   text-transform: uppercase;
-  letter-spacing: 1px; 
+  letter-spacing: 1px;
 }
 
 .about-text p {
-  font-size: 1.2em;
-  line-height: 1.6;
+  font-size: 1.15rem;  
+  line-height: 1.8;
   margin-bottom: 40px;
 }
 
 .about-features {
-  flex: 1 1 50%;
+  flex: 1 1 45%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  gap: 20px;  
+  justify-content: space-between;
 }
 
 .feature {
-  flex: 1 1 45%;
+  flex: 1 1 30%;
   display: flex;
   align-items: center;
-  margin: 10px;
   padding: 20px;
   background: var(--colora);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);  
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
-
 .feature:hover {
   background: #606070;
+  color: #fff;  
+  /* transform: scale(1.05);   */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);  
 }
 
 .feature .icon {
@@ -331,21 +412,22 @@ html::-webkit-scrollbar-track {
 }
 
 .feature .icon img {
-  width: 60px;
-  height: 60px;
+  width: 70px;  
+  height: 70px;
 }
 
 .feature-text h3 {
-  font-size: 1.5em;
+  font-size: 1.6rem;  
   font-weight: 700;
-  margin-bottom: 15px;
-  text-transform: capitalize;
+  margin-bottom: 10px;
   color: var(--primary-color);
+  text-transform: capitalize;
 }
 
 .feature-text p {
-  font-size: 1em;
+  font-size: 1.05rem; 
   color: var(--colorb);
+  line-height: 1.6; 
 }
 
 @media (max-width: 768px) {
@@ -360,6 +442,7 @@ html::-webkit-scrollbar-track {
 
   .feature {
     flex: 1 1 80%;
+    margin: 10px auto;  
   }
 }
 
@@ -375,24 +458,27 @@ html::-webkit-scrollbar-track {
   padding: 60px 20px;
   background-color: #f5f5f5;
   text-align: center;
+  border-top: 5px solid var(--colora);  
 }
 
 .services-header {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .services-header h2 {
-  font-size: 3em;
-  color: var(--primary-color);
-  margin-bottom: 10px;
+  font-size: 3.5em;
+  color: var(--primary-color); 
+  margin-top: -50px;
   font-weight: 800;
   text-transform: uppercase;
+  line-height: 1.2;
 }
 
 .services-header p {
-  font-size: 1.4em;
+  font-size: 1.5em;
   color: var(--colora);
   margin: 0;
+  line-height: 1.5;
 }
 
 .services-container {
@@ -404,38 +490,56 @@ html::-webkit-scrollbar-track {
 
 .service-card {
   background-color: #ffffff;
-  border: solid 1px transparent;
   border-radius: 12px;
   padding: 20px;
-  width: calc(25% - 20px);
+  width: calc(33.333% - 20px); /* Adjusted to fit three cards per row */
   text-align: center;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
   background: linear-gradient(var(--colorbody), var(--colorbody)) padding-box,
               linear-gradient(45deg, var(--colora), var(--secondary-color)) border-box;
+  border: 2px solid transparent; /* Adds a border effect */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.service-card {
+  animation: fadeIn 1s forwards;
 }
 
 .service-card img {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 15px;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
 }
 
 .service-card h3 {
-  font-size: 1.5em;
+  font-size: 1.75em;
   color: var(--primary-color);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .service-card p {
   color: #666;
-  font-size: 1em;
+  font-size: 1.1em;
+  line-height: 1.4;
 }
 
 .service-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
@@ -450,12 +554,22 @@ html::-webkit-scrollbar-track {
     width: 100%;
   }
 }
-  
 
+  
 /* Portfolio Section */
+.portfolio-section {
+  background-color: var(--primary-color);
+  color: var(--colorb);
+  min-height: 100vh;  
+  display: flex;
+  justify-content: center;  
+  align-items: center; 
+  padding: 50px 0;  
+}
+
 .portfolio-container {
   max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   padding: 0 15px;
 }
 
@@ -468,28 +582,20 @@ html::-webkit-scrollbar-track {
   text-align: center;
 }
 
-.section-heading {
-  font-size: 2.5em;
+.portfolio-heading {
+  font-size: 3.5em; 
   color: var(--colorbody);
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.portfolio-subheading {
+  font-size: 1.5em; 
+  color: var(--colorbody);
+  margin-bottom: 40px; 
 }
 
 .highlight-text {
   color: var(--colora);
-}
-
-.portfolio-section {
-  background-color: var(--primary-color);
-  position: relative;
-  padding: 50px 0;
-  overflow-x: hidden;
-}
-
-.portfolio-heading {
-  color: var(--colorbody); 
-  font-size: 2.8em;
-  text-align: center;
-  margin-bottom: 30px;
 }
 
 .swiper-container {
@@ -507,9 +613,10 @@ html::-webkit-scrollbar-track {
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   display: flex;
   align-items: flex-end;
-  height: 300px;
+  height: 350px;  
   color: var(--colorbody);
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  margin: 10px;  
 }
 
 .portfolio-card-overlay {
@@ -609,7 +716,7 @@ html::-webkit-scrollbar-track {
 @media (max-width: 768px) {
   .portfolio-card {
     max-width: 100%;
-    height: 200px;
+    height: 250px;  
   }
 
   .portfolio-swiper-button-next,
@@ -634,72 +741,76 @@ html::-webkit-scrollbar-track {
 }
 
 
-
-
 /* Contact Section */
 .contact {
-  padding: 80px 0;
+  padding: 80px 20px;
   background: #f9f9f9;
   text-align: center;
 }
 
 .contact .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .contact .section-title {
-  font-size: 2.5rem;
+  font-size: 3rem; 
   margin-bottom: 20px;
   color: var(--primary-color);
+  font-weight: 700; 
+  text-transform: uppercase;  
 }
 
 .contact .section-description {
-  font-size: 1rem;
+  font-size: 1.2rem;  
   margin-bottom: 40px;
   color: var(--colora);
+  line-height: 1.6;  
 }
 
 .contact-options {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 60px;
+  gap: 20px;  
 }
 
 .contact-option {
   flex: 1;
-  max-width: 250px;
+  max-width: 280px;  
   margin: 20px;
-  padding: 20px;
+  padding: 25px;
   background: var(--colorbody);
-  border-radius: 10px;
-  box-shadow: 0px 4px 4px #00000030, 0px 12px 12px #00000015;
-  transition: transform 0.3s ease-in-out;
+  border-radius: 12px;  
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 12px 24px rgba(0, 0, 0, 0.05);  
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .contact-option:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);  
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 16px 32px rgba(0, 0, 0, 0.1); 
 }
 
 .contact-option i {
-  font-size: 2.5rem;
+  font-size: 3rem;  
   color: var(--primary-color);
-  margin-bottom: 20px;
+  margin-bottom: 15px;  
 }
 
 .option-content h4 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;  
   margin-bottom: 10px;
   color: var(--primary-color);
 }
 
 .option-content p {
-  font-size: 1rem;
+  font-size: 1.1rem;  
   color: var(--colora);
+  line-height: 1.5;  
 }
 
 .contact-action {
+  margin: 35px 0;
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -712,7 +823,7 @@ html::-webkit-scrollbar-track {
   color: white;
   font-size: 1.2rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;  
   text-decoration: none;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
@@ -720,6 +831,5 @@ html::-webkit-scrollbar-track {
 
 .action-button:hover {
   background-color: var(--colora);
-  color: var(--secondary-colorl);
+  color: var(--secondary-color);  
 }
-
