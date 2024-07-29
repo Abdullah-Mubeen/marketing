@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.header');
   const heroSection = document.querySelector('.about-section'); // Adjust if needed
   const aboutContent = document.querySelector('.about-content');
-  const portfolioSwiper = document.querySelector('.portfolio-swiper');
+  const swiperContainer = document.querySelector('.portfolio-swiper'); // Ensure this is defined
+  const slides = document.querySelectorAll('.testimonial-slide');
 
   // Function to toggle menu visibility
   const toggleMenu = () => fullPageMenu.classList.toggle('active');
@@ -20,10 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', toggleMenu);
   });
 
-  // Sticky navbar on scroll
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('sticky', window.scrollY > heroSection.offsetHeight);
-  });
+  // Sticky navbar on scroll with throttling
+  let isScrolling = false;
+  const handleScroll = () => {
+    if (!isScrolling) {
+      isScrolling = true;
+      window.requestAnimationFrame(() => {
+        header.classList.toggle('sticky', window.scrollY > heroSection.offsetHeight);
+        isScrolling = false;
+      });
+    }
+  };
+  window.addEventListener('scroll', handleScroll);
 
   // Reveal content on scroll
   const reveal = () => {
@@ -32,8 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const elementVisible = 150;
     
     if (elementTop < windowHeight - elementVisible) {
-      aboutContent.style.opacity = '1';
-      aboutContent.style.transform = 'translateY(0)';
+      aboutContent.classList.add('visible');
     }
   };
 
@@ -48,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Initialize Swiper
-  const swiper = new Swiper('.portfolio-swiper', {
+  const swiper = new Swiper(swiperContainer, {
     loop: true,
     autoplay: {
       delay: 3000,
@@ -72,4 +80,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // Pause Swiper autoplay on hover
   swiperContainer.addEventListener('mouseenter', () => swiper.autoplay.stop());
   swiperContainer.addEventListener('mouseleave', () => swiper.autoplay.start());
+
+  // Testimonial slider
+  let currentSlide = 0;
+
+  const showSlide = (index) => {
+    slides.forEach((slide, i) => {
+      slide.style.transform = `translateX(-${index * 100}%)`;
+    });
+  };
+
+  const nextSlide = () => {
+    currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+    showSlide(currentSlide);
+  };
+
+  // Automatically transition every 4 seconds
+  setInterval(nextSlide, 4000);
+
+  // Initial display
+  showSlide(currentSlide);
 });
