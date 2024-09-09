@@ -16,6 +16,10 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 
 /* Custom Scrollbar for Webkit Browsers (Chrome, Safari) */
 html::-webkit-scrollbar {
@@ -308,29 +312,7 @@ html::-webkit-scrollbar-track {
 .menu-list li a:hover {
   color: var(--colora);
 }
-
-.cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: var(--colorbody);
-  transition: transform 0.2s ease, background-color 0.2s ease;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  mix-blend-mode: difference;
-}
-
-/* Cursor enlargement on hover */
-ul li:hover ~ .cursor {
-  transform: scale(6);
-}
-
-/* Optional: Add smooth scaling effect */
-.cursor-scale {
-  transform: scale(3);
-}
-
+ 
 @media (max-width: 768px) {
   .hero-section {
     padding: 40px;
@@ -475,107 +457,99 @@ ul li:hover ~ .cursor {
 }
 
 
-/* Services */
-.services-section {
-  padding: 60px 20px;
-  background-color: #f5f5f5;
+/* Services */ 
+.service-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Services Title */
+.services-title {
+  font-size: 3.5rem;
   text-align: center;
-  border-top: 5px solid var(--colora);  
-  
+  /* margin-bottom: 60px; */
+  color: var(--primary-color);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
 }
 
-.services-header {
-  margin-bottom: 40px;
+.services-title::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 6px;
+  background-color: #57b4d8;
+  border-radius: 3px;
+  z-index: -1;
 }
 
-.services-header h2 {
-  font-size: 3.5em;
-  color: var(--primary-color);  
-  font-weight: 800;
-  text-transform: uppercase;
-  line-height: 1.2;
+.highlight {
+  color: var(--secondary-color);
+  font-weight: 700;
 }
 
-.services-header p {
-  font-size: 1.5em;
-  color: var(--colora);
-  margin: 0;
-  line-height: 1.5;
+/* Services Overview Section */
+.services-overview {
+  background: #ffffff;
+  padding: 80px 20px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
-.services-container {
+.services-grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   gap: 20px;
-  justify-content: center;
 }
 
-.service-card {
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 20px;
-  width: calc(33.333% - 20px); /* Adjusted to fit three cards per row */
+.service-item {
+  flex: 1 1 22%;
+  background: #f9f9f9;
+  border-radius: 20px;
+  padding: 40px;
   text-align: center;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  background: linear-gradient(var(--colorbody), var(--colorbody)) padding-box,
-              linear-gradient(45deg, var(--colora), var(--secondary-color)) border-box;
-  border: 2px solid transparent; /* Adds a border effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.3s ease;
+  cursor: pointer;
+  position: relative;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.service-item:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  background-color: #659ebd;
 }
 
-.service-card {
-  animation: fadeIn 1s forwards;
-}
-
-.service-card img {
-  width: 100px;
-  height: 100px;
+.service-icon {
+  font-size: 3.5rem;
+  color: var(--primary-color);
   margin-bottom: 20px;
-  transition: transform 0.3s ease;
+  transition: color 0.3s ease;
 }
 
-.service-card h3 {
-  font-size: 1.75em;
+.service-item:hover .service-icon {
+  color: var(--secondary-color);
+}
+
+.service-item h3 {
+  font-size: 1.8rem;
   color: var(--primary-color);
   margin-bottom: 15px;
+  font-weight: 700;
 }
 
-.service-card p {
-  color: #666;
-  font-size: 1.1em;
-  line-height: 1.4;
+.service-item p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
 }
 
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-  .service-card {
-    width: calc(50% - 20px);
-  }
-}
-
-@media (max-width: 480px) {
-  .service-card {
-    width: 100%;
-  }
-}
 
   /* Portfolio Section */
 .portfolio-section {
@@ -953,53 +927,55 @@ ul li:hover ~ .cursor {
 
 
 
-
 /* Footer */
 .footer {
-  background-color: var(--secondary-color); /* Dark background */
-  color: var(--colorbody); /* Light text color */
-  padding: 50px 0;
-  text-align: center; /* Center align for smaller screens */
+  background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  color: var(--colorbody);
+  padding: 60px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .footer-container {
   display: flex;
-  flex-direction: column; /* Default to column layout for smaller screens */
+  flex-direction: column;
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  gap: 40px;
 }
 
 .footer-logo {
-  margin-bottom: 30px; /* Space between sections */
+  margin-bottom: 30px;
 }
 
 .footer-logo h2 {
   color: var(--colorbody);
-  font-size: 2em; /* Adjusted size for responsiveness */
+  font-size: 2.5em;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .footer-logo p {
   color: var(--colora);
   font-size: 1.1em;
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
-.footer-contact, .footer-links {
-  margin-bottom: 30px; /* Space between sections */
+.footer-contact, .footer-links{
+  margin-bottom: 30px;
 }
 
 .footer-contact h4, .footer-links h4 {
   color: var(--colorbody);
-  font-size: 1.4em; /* Adjusted size for responsiveness */
+  font-size: 1.6em;
   margin-bottom: 15px;
 }
 
-.footer-contact p, .footer-links ul {
+.footer-contact p, .footer-links ul{
   color: var(--colora);
-  font-size: 1em; /* Adjusted size for responsiveness */
+  font-size: 1em;
 }
 
 .footer-contact p {
@@ -1012,24 +988,41 @@ ul li:hover ~ .cursor {
 }
 
 .footer-links ul li {
-  margin-bottom: 8px; /* Reduced space between links */
+  margin-bottom: 10px;
 }
 
 .footer-links a {
   color: var(--colorbody);
   text-decoration: none;
-  transition: color 0.3s;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .footer-links a:hover {
   color: var(--colora);
+  transform: translateX(5px);
 }
-
+ 
 .footer-bottom {
-  background-color: var(--secondary-color); /* Dark background */
+  background: var(--primary-color);
   color: var(--colorbody);
   padding: 20px;
-  font-size: 1em; /* Adjusted size for responsiveness */
+  font-size: 1em;
+}
+
+.footer-bottom .social-media {
+  margin-bottom: 15px;
+}
+
+.footer-bottom .social-media a {
+  color: var(--colorbody);
+  margin: 0 10px;
+  font-size: 1.5em;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.footer-bottom .social-media a:hover {
+  color: var(--colora);
+  transform: scale(1.1);
 }
 
 .footer-bottom p {
@@ -1039,43 +1032,36 @@ ul li:hover ~ .cursor {
 /* Responsive Styles */
 @media (min-width: 768px) {
   .footer-container {
-    flex-direction: row; /* Row layout for tablets and larger screens */
+    flex-direction: row;
+    gap: 60px;
   }
 
-  .footer-logo, .footer-contact, .footer-links {
+  .footer-logo, .footer-contact, .footer-links, .footer-newsletter {
     flex: 1;
     margin-bottom: 0;
     padding: 0 20px;
-  }
-
-  .footer-logo {
-    margin-right: 40px;
-    margin-bottom: 0;
-  }
-
-  .footer-contact, .footer-links {
-    margin-bottom: 0;
   }
 }
 
 @media (min-width: 992px) {
   .footer-logo h2 {
-    font-size: 2.5em; /* Larger size for desktop */
+    font-size: 3em;
   }
 
   .footer-logo p {
-    font-size: 1.2em;
+    font-size: 1.3em;
   }
 
-  .footer-contact h4, .footer-links h4 {
-    font-size: 1.6em;
+  .footer-contact h4, .footer-links h4, .footer-newsletter h4 {
+    font-size: 1.8em;
   }
 
-  .footer-contact p, .footer-links ul {
+  .footer-contact p, .footer-links ul, .footer-newsletter form {
     font-size: 1.1em;
   }
 
   .footer-links ul li {
-    margin-bottom: 10px; /* Adjust spacing for larger screens */
+    margin-bottom: 15px;
   }
 }
+
